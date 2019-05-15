@@ -4,11 +4,14 @@ const peopleList = document.getElementById('people');
 const btn = document.querySelector('button');
 
 // Make an AJAX request
-function getJSON(url) {
+function getJSON(url)
+{
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url);
-  xhr.onload = () => {
-    if(xhr.status === 200) {
+  xhr.onload = () =>
+  {
+    if (xhr.status === 200)
+    {
       let data = JSON.parse(xhr.responseText);
       console.log(data);
     }
@@ -17,7 +20,8 @@ function getJSON(url) {
 }
 
 // Generate the markup for each profile
-function generateHTML(data) {
+function generateHTML(data)
+{
   const section = document.createElement('section');
   peopleList.appendChild(section);
   section.innerHTML = `
@@ -28,4 +32,4 @@ function generateHTML(data) {
   `;
 }
 
-getJSON(astrosUrl);
+btn.addEventListener('click', () => getJSON(astrosUrl));
