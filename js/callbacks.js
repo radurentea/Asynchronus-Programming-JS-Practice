@@ -19,6 +19,14 @@ function getJSON(url, callback)
   xhr.send();
 }
 
+function getProfiles(json)
+{
+  json.people.map(person =>
+  {
+    getJSON(wikiUrl + person.name, generateHTML);
+  });
+}
+
 // Generate the markup for each profile
 function generateHTML(data)
 {
@@ -34,12 +42,6 @@ function generateHTML(data)
 
 btn.addEventListener('click', (event) =>
 {
-  getJSON(astrosUrl, (json) =>
-  {
-    json.people.map(person =>
-    {
-      getJSON(wikiUrl + person.name, generateHTML);
-    });
-  });
+  getJSON(astrosUrl, getProfiles);
   event.target.remove();
 });
