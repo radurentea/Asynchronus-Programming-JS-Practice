@@ -32,7 +32,7 @@ function generateHTML(data)
   `;
 }
 
-btn.addEventListener('click', () =>
+btn.addEventListener('click', (event) =>
 {
   getJSON(astrosUrl, (json) =>
   {
@@ -41,4 +41,5 @@ btn.addEventListener('click', () =>
       getJSON(wikiUrl + person.name, generateHTML);
     });
   });
+  event.target.remove();
 });
