@@ -9,8 +9,9 @@ function getProfiles(json)
   {
     return fetch(wikiUrl + person.name)
       .then(response => response.json());
-  });
-  return Promise.all(profiles);
+      .catch(err => console.log('Error Fetching Wiki: ', err));
+});
+return Promise.all(profiles);
 }
 
 function generateHTML(data)
